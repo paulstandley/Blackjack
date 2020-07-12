@@ -8,20 +8,6 @@
 #include "BJHeader.h"
 
 
-// Create aliases.
-using deck_type = std::array<Card, 52>;
-using index_type = deck_type::size_type;
-
-deck_type createDeck()
-{
-	deck_type deck{};
-	index_type card{ 0 };
-}
-
-// Maximum score before losing
-constexpr int maximumScore{ 21 };
-// Minimum score for dealer to have
-constexpr int minimumDealerScore{ 17 };
 
 void printCard(const Card& card)
 {// switch on suit and rank of Card
@@ -120,4 +106,32 @@ void printDeck(const deck_type& deck)
 	}
 	std::cout << '\n';
 }
+
+deck_type createDeck()
+{// create a deck useing card ranks and suits
+	deck_type deck{};
+	index_type card{ 0 };
+
+	auto suits{ static_cast<int>(CardSuit::MAX_SUITS) };
+	auto ranks{ static_cast<int>(CardRank::MAX_RANKS) };
+
+	for ( int suit{ 0 }; suit < suits; ++suit)
+	{
+		for (int rank{ 0 }; rank < ranks; ++rank)
+		{
+			deck[card].suit = static_cast<CardSuit>(suit);
+			deck[card].rank = static_cast<CardRank>(rank);
+			++card;
+		}
+	}
+	return deck;
+}
+
+void shuffleDeck(deck_type& deck)
+{// shuffle deck with mersenne twiser
+	static std::mt19937 mt{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
+	std::shuffle(deck.begin(), deck.end(), mt);
+}
+
+
 

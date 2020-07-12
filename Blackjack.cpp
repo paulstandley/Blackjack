@@ -10,7 +10,8 @@
 
 int main()
 {
-    
+    auto deck{ createDeck() };
+    printDeck(deck);
 
     return 0;
 }

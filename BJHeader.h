@@ -38,11 +38,24 @@ struct Player
 	int score{};
 };
 
+// Create aliases.
+using deck_type = std::array<Card, 52>;
+using index_type = deck_type::size_type;
+
+// Maximum score before losing
+constexpr int maximumScore{ 21 };
+// Minimum score for dealer to have
+constexpr int minimumDealerScore{ 17 };
+
 deck_type createDeck();
 
 void printCard(const Card& card);
 int getCardValue(const Card& card);
+
 void printDeck(const deck_type& deck);
+void shuffleDeck(deck_type& deck);
+
+bool playerWantsHit();
 
 
 
