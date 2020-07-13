@@ -49,7 +49,7 @@ bool playerTurn(const deck_type& deck, index_type& nextIndex, Player& player)
 
 bool dealerTurn(const deck_type& deck, index_type& nexIndex, Player& dealer)
 {// Return true if dealer went bust
-    while (dealer.score < maximumScore)
+    while (dealer.score < minimumDealerScore)
     {// Draw until minimum value
         dealer.score += getCardValue(deck[nexIndex++]);
         std::cout << "The dealer has: " << dealer.score << '\n';

@@ -9,17 +9,38 @@
 
 
 int main()
-{
-    auto deck{ createDeck() };
-    shuffleDeck(deck);
-    if (playBlackjack(deck))
-    {
-        std::cout << "You win!\n";
-    }
-    else
-    {
-        std::cout << "You lose!\n";
-    }
+{   
+    int playerSore{ 0 };
+    int dealerScore{ 0 };
+	while (true)
+	{
+        char play{};
+        std::cout << "Do you want too play Blackjack (y) or (n) : ";
+        std::cin >> play;
+        if (play == 'y')
+        {
+            auto deck{ createDeck() };
+            shuffleDeck(deck);
+            if (playBlackjack(deck))
+            {
+                playerSore++;
+                std::cout << "You win!\n";
+                std::cout << "your score is " << playerSore << 
+                    " and the dealers is " << dealerScore << '\n';
+            }
+            else
+            {
+                dealerScore++;
+                std::cout << "You lose!\n";
+                std::cout << "your score is " << playerSore <<
+                    " and the dealers is " << dealerScore << '\n';
+            }
+        }
+        else
+        {
+            return 0;
+        }
+	}
 
     return 0;
 }

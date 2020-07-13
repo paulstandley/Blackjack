@@ -62,5 +62,6 @@ bool dealerTurn(const deck_type& deck, index_type& nexIndex, Player& player);
 bool playBlackjack(const deck_type& deck);
 
 
+
 #endif // !BLACKJACK
 
