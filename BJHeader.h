@@ -54,10 +54,12 @@ int getCardValue(const Card& card);
 
 void printDeck(const deck_type& deck);
 void shuffleDeck(deck_type& deck);
+
 // play game
 bool playerWantsHit();
 bool playerTurn(const deck_type& deck, index_type& nextIndex, Player& player);
-
+bool dealerTurn(const deck_type& deck, index_type& nexIndex, Player& player);
+bool playBlackjack(const deck_type& deck);
 
 
 #endif // !BLACKJACK

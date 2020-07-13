@@ -11,7 +11,15 @@
 int main()
 {
     auto deck{ createDeck() };
-    printDeck(deck);
+    shuffleDeck(deck);
+    if (playBlackjack(deck))
+    {
+        std::cout << "You win!\n";
+    }
+    else
+    {
+        std::cout << "You lose!\n";
+    }
 
     return 0;
 }
